@@ -44,14 +44,10 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
           layer_on(_NUMOFF);
         }
         return false;
-      } else {
-        return true; // Win
       }
     } else {
       if (MAC_mode) {
         return false;
-      } else {
-        return true;
       }
     }
     break;
