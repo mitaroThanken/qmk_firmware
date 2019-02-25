@@ -17,3 +17,22 @@
 	{ K40,   K41,   K42,   K43,   K44 }  \
 }
 // clang-format on
+
+enum attack25_custom_keycodes {
+  NUM = SAFE_RANGE,
+  FN,
+  RGB,
+  RGB_MODF,
+  RGB_MODR,
+  RGBHINC,
+  RGBHDEC,
+  RGBSINC,
+  RGBSDEC,
+  RGBVINC,
+  RGBVDEC,
+  RGBRST,
+  P00,
+  WINMAC,
+  ATTACK25_SAFE_RANGE
+};
+
