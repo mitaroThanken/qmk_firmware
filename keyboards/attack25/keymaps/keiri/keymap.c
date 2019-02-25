@@ -13,22 +13,6 @@ enum layer_number {
   _RGB
 };
 
-enum custom_keycodes {
-  NUM = SAFE_RANGE,
-  FN,
-  RGB,
-  RGB_MODF,
-  RGB_MODR,
-  RGBHINC,
-  RGBHDEC,
-  RGBSINC,
-  RGBSDEC,
-  RGBVINC,
-  RGBVDEC,
-  RGBRST,
-  P00
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUM] = LAYOUT_ortho_5x5( \
 	KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, KC_ESC, \
