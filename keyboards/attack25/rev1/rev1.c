@@ -150,7 +150,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   return process_record_user(keycode, record);
 }
 
-uint32_t layer_state_set_user(uint32_t state) {
+uint32_t layer_state_set_kb(uint32_t state) {
 #ifdef RGBLIGHT_ENABLE
   switch (biton32(state)) {
   case _FN:
@@ -172,7 +172,7 @@ uint32_t layer_state_set_user(uint32_t state) {
     break;
   }
 #endif
-  return state;
+  return layer_state_set_user(state);
 }
 
 void led_set_kb(uint8_t usb_led) {
