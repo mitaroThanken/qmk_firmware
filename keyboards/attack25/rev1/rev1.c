@@ -34,7 +34,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
       MAC_mode = !MAC_mode;
     }
     return false;
-    break;
   case KC_NLCK:
     if (record->event.pressed) {
       if (MAC_mode) {
@@ -65,7 +64,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGB_MODR:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -75,7 +73,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBRST:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -85,7 +82,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBHINC:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -94,7 +90,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBHDEC:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -103,7 +98,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBSINC:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -112,7 +106,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBSDEC:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -121,7 +114,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBVINC:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -130,7 +122,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGBVDEC:
 #ifdef RGBLIGHT_ENABLE
     if (record->event.pressed) {
@@ -139,7 +130,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 #endif
     return false;
-    break;
   case RGB_MODE_PLAIN:
   case RGB_MODE_BREATHE:
   case RGB_MODE_RAINBOW:
@@ -158,7 +148,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING("00");
     }
     return false;
-    break;
   default:
     break;
   }
