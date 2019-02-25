@@ -11,7 +11,7 @@ bool RGB_momentary_on = false;
 bool MAC_mode = true;
 bool NumLock_Mode = true;
 
-void matrix_init_user(void) {
+void matrix_init_kb(void) {
 #ifdef RGBLIGHT_ENABLE
   rgblight_init();
   RGB_current_config = rgblight_config;
@@ -19,11 +19,15 @@ void matrix_init_user(void) {
   TX_RX_LED_INIT; // Turn LEDs off by default
   RXLED0;
   TXLED0;
+  matrix_init_user();
 }
 
-void matrix_scan_user(void) {}
+void matrix_scan_kb(void) {
+  // NOP
+  matrix_scan_user();
+}
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case WINMAC:
     if (record->event.pressed) {
@@ -148,7 +152,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       RGB_current_config.mode = rgblight_config.mode;
     }
 #endif
-    return true;
     break;
   case P00:
     if (record->event.pressed) {
@@ -159,7 +162,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   default:
     break;
   }
-  return true;
+  return process_record_user(keycode, record);
 }
 
 uint32_t layer_state_set_user(uint32_t state) {
@@ -187,7 +190,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   return state;
 }
 
-void led_set_user(uint8_t usb_led) {
+void led_set_kb(uint8_t usb_led) {
 #ifdef RGBLIGHT_ENABLE
   if (!RGB_momentary_on && !MAC_mode) {
     if (usb_led & (1 << USB_LED_NUM_LOCK)) {
@@ -216,4 +219,6 @@ void led_set_user(uint8_t usb_led) {
   if (usb_led & (1 << USB_LED_KANA)) {
   } else {
   }
+
+  led_set_user(usb_led);
 }
