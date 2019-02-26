@@ -8,7 +8,7 @@ rgblight_config_t RGB_current_config;
 #endif
 
 bool RGB_momentary_on = false;
-bool MAC_mode = true;
+extern bool MAC_mode;
 bool NumLock_Mode = true;
 
 void matrix_init_kb(void) {

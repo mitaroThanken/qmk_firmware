@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+bool MAC_mode = false;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUM] = LAYOUT_ortho_5x5( \
 	KC_ESC, KC_F2, LCTL(KC_1), KC_DEL, KC_BSPC, \
