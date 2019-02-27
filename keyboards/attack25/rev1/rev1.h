@@ -36,11 +36,19 @@ enum attack25_custom_keycodes {
   ATTACK25_SAFE_RANGE
 };
 
-enum attack25_default_layer_number
-{
-  _NUM = 0,
-  _NUMOFF,
-  _FN,
-  _RGB,
-  ATTACK25_SAFE_LAYER_NUMBER
-};
+// layer number
+#ifndef _NUM
+#define _NUM 0
+#endif
+
+#ifndef _NUMOFF
+#define _NUMOFF 1
+#endif
+
+#ifndef _FN
+#define _FN 2
+#endif
+
+#ifndef _RGB
+#define _RGB 3
+#endif
