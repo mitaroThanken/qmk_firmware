@@ -21,11 +21,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_INS,  KC_BSPC, KC_DEL,  _______),
 
   [_WINCTL] = LAYOUT_ortho_5x5(
-    XXXXXXX,     KC_ESC,              LGUI(KC_UP),   XXXXXXX,              LGUI(KC_1),
-    DF(_NUM),    LGUI(KC_LEFT),       LGUI(KC_DOWN), LGUI(KC_RIGHT),       LGUI(KC_2),
-    DF(_VSCTRL), LCTL(LGUI(KC_LEFT)), LGUI(KC_TAB),  LCTL(LGUI(KC_RIGHT)), LGUI(KC_3),
-    LGUI(KC_E),  KC_PGUP,             KC_UP,         KC_PGDN,              LGUI(KC_4),
-    _______,     KC_LEFT,             KC_DOWN,       KC_RIGHT,             KC_PENT),
+    XXXXXXX,     KC_ESC,        XXXXXXX,       XXXXXXX,        LGUI(KC_1),
+    DF(_NUM),    XXXXXXX,       XXXXXXX,       XXXXXXX,        LGUI(KC_2),
+    DF(_VSCTRL), KC_PGUP,       KC_UP,         KC_PGDN,        LGUI(KC_3),
+    TG_GUI,      KC_LEFT,       KC_DOWN,       KC_RIGHT,       LGUI(KC_4),
+    _______,     LCTL(KC_LEFT), LGUI(KC_TAB),  LCTL(KC_RIGHT), KC_PENT),
 
   [_VSCTRL] = LAYOUT_ortho_5x5(
     XXXXXXX,     _______, _______, _______, _______,
