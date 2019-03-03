@@ -1,15 +1,12 @@
+#include "quantum.h"
+#include "keycodes.h"
 #include "toggle_gui.h"
-
-__attribute__ ((weak))
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-  return true;
-}
 
 bool tg_gui = false;
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool toggle_gui(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case TG_LGUI:
+    case TG_GUI:
       if (record->event.pressed) {
         if (tg_gui == false) {
           tg_gui = true;
@@ -31,5 +28,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     default:
       break;
   }
-  return process_record_keymap(keycode, record);
+  return true;
 }

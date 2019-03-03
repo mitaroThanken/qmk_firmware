@@ -1,4 +1,6 @@
 #include QMK_KEYBOARD_H
+#include "keycodes.h"
+#include "toggle_gui.h"
 
 bool MAC_mode = true;
 
@@ -47,3 +49,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_DEL, KC_BSPC, KC_APP, KC_LWIN)
 };
 // clang-format on
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) { return toggle_gui(keycode, record); }
