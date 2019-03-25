@@ -8,10 +8,10 @@ bool MAC_mode = true;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUM] = LAYOUT_ortho_5x5(
     KC_NLCK,     KC_ESC, KC_PSLS,  KC_PAST, KC_PMNS,
-    DF(_WINCTL), KC_P7,  KC_P8,    KC_P9,   KC_PPLS,
-    DF(_VSCTRL), KC_P4,  KC_P5,    KC_P6,   S(KC_TAB),
-    KC_HOME,     KC_P1,  KC_P2,    KC_P3,   KC_TAB,
-    MO(_FN),     KC_P0,  KC_COMMA, KC_PDOT, KC_PENT),
+    DF(_WINCTL), KC_7,   KC_8,     KC_9,    KC_PPLS,
+    DF(_VSCTRL), KC_4,   KC_5,     KC_6,    S(KC_TAB),
+    KC_HOME,     KC_1,   KC_2,     KC_3,    KC_TAB,
+    MO(_FN),     KC_0,   KC_COMMA, KC_PDOT, KC_PENT),
 
   [_NUMOFF] = LAYOUT_ortho_5x5(
     _______, _______, _______, _______, _______,
@@ -21,11 +21,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_INS,  KC_BSPC, KC_DEL,  _______),
 
   [_WINCTL] = LAYOUT_ortho_5x5(
-    XXXXXXX,     KC_ESC,        XXXXXXX,       XXXXXXX,        LGUI(KC_1),
-    DF(_NUM),    XXXXXXX,       XXXXXXX,       XXXXXXX,        LGUI(KC_2),
-    DF(_VSCTRL), KC_PGUP,       KC_UP,         KC_PGDN,        LGUI(KC_3),
-    TG_GUI,      KC_LEFT,       KC_DOWN,       KC_RIGHT,       LGUI(KC_4),
-    _______,     LCTL(KC_LEFT), LGUI(KC_TAB),  LCTL(KC_RIGHT), KC_PENT),
+    XXXXXXX,     KC_ESC,           LGUI(KC_COMMA), LGUI(KC_D),     LGUI(KC_1),
+    DF(_NUM),    LGUI(LALT(KC_D)), LGUI(KC_S),     LGUI(KC_E),     LGUI(KC_2),
+    DF(_VSCTRL), KC_PGUP,          KC_UP,          KC_PGDN,        LGUI(KC_3),
+    TG_GUI,      KC_LEFT,          KC_DOWN,        KC_RIGHT,       LGUI(KC_4),
+    _______,     LCTL(KC_LEFT),    KC_TAB,         LCTL(KC_RIGHT), KC_PENT),
 
   [_VSCTRL] = LAYOUT_ortho_5x5(
     XXXXXXX,     _______, _______, _______, _______,
@@ -44,8 +44,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FN] = LAYOUT_ortho_5x5(
     TG(_RGB), KC_F10, KC_F11,  KC_F12, LCTL(KC_F4),
     _______,  KC_F7,  KC_F8,   KC_F9,  LALT(KC_F4),
-    _______,  KC_F4,  KC_F5,   KC_F6,  LGUI(KC_F4),
-    _______,  KC_F1,  KC_F2,   KC_F3,  LGUI(KC_D),
+    _______,  KC_F4,  KC_F5,   KC_F6,  LGUI(LCTL(KC_F4)),
+    _______,  KC_F1,  KC_F2,   KC_F3,  LGUI(LCTL(KC_D)),
     _______,  KC_DEL, KC_BSPC, KC_APP, KC_LWIN)
 };
 // clang-format on
