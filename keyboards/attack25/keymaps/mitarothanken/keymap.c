@@ -7,11 +7,11 @@ bool MAC_mode = true;
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUM] = LAYOUT_ortho_5x5(
-    KC_NLCK,     KC_ESC, KC_PSLS,  KC_PAST, KC_PMNS,
-    DF(_WINCTL), KC_7,   KC_8,     KC_9,    KC_PPLS,
+    KC_NLCK,     KC_ESC, KC_SLASH, S(KC_8), KC_MINS,
+    DF(_WINCTL), KC_7,   KC_8,     KC_9,    S(KC_EQL),
     DF(_VSCTRL), KC_4,   KC_5,     KC_6,    S(KC_TAB),
     KC_HOME,     KC_1,   KC_2,     KC_3,    KC_TAB,
-    MO(_FN),     KC_0,   KC_COMMA, KC_PDOT, KC_PENT),
+    MO(_FN),     KC_0,   KC_COMMA, KC_DOT,  KC_ENT),
 
   [_NUMOFF] = LAYOUT_ortho_5x5(
     _______, _______, _______, _______, _______,
