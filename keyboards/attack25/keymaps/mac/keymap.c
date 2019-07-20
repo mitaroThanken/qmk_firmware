@@ -20,7 +20,6 @@ enum custom_keycodes
   NUM = SAFE_RANGE,
   NUMOFF,
   FN,
-  RGB,
   RGB_MODF,
   RGB_MODR,
   RGBHINC,

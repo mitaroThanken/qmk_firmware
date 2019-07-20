@@ -16,7 +16,6 @@ enum layer_number {
 enum custom_keycodes {
   NUM = SAFE_RANGE,
   FN,
-  RGB,
   RGB_MODF,
   RGB_MODR,
   RGBHINC,
