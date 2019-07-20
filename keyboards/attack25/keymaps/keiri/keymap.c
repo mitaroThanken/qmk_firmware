@@ -170,7 +170,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case P00:
 	  if (record->event.pressed) {
 	     SEND_STRING("00");
-	  }  
+	  }
 	  return false;
 	  break;
 	default:
@@ -179,7 +179,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
- 
+
 uint32_t layer_state_set_user(uint32_t state) {
 	#ifdef RGBLIGHT_ENABLE
 	    switch (biton32(state)) {
@@ -198,43 +198,43 @@ uint32_t layer_state_set_user(uint32_t state) {
 	}
 	#endif
 	return state;
-} 
+}
 
 void led_set_user(uint8_t usb_led) {
 	#ifdef RGBLIGHT_ENABLE
     if (!RGB_momentary_on) {
 	    if (usb_led & (1 << USB_LED_NUM_LOCK)) {
-	        rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val); 
+	        rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val);
 			rgblight_mode_noeeprom(RGB_current_config.mode);
 	   } else {
-		  rgblight_sethsv_noeeprom_azure();	
+		  rgblight_sethsv_noeeprom_azure();
           rgblight_mode_noeeprom(1);
 	   }
 	}
 	#endif
 
 	if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
-		
+
 	} else {
-		
+
 	}
 
 	if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
-		
+
 	} else {
-		
+
 	}
 
 	if (usb_led & (1 << USB_LED_COMPOSE)) {
-		
+
 	} else {
-		
+
 	}
 
 	if (usb_led & (1 << USB_LED_KANA)) {
-		
+
 	} else {
-		
+
 	}
 
 }
