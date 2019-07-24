@@ -9,10 +9,10 @@ bool toggle_gui(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if (tg_gui == false) {
                     tg_gui = true;
-                    SEND_STRING(SS_DOWN(X_LGUI));
+                    register_code(KC_LGUI);
                 } else {
                     tg_gui = false;
-                    SEND_STRING(SS_UP(X_LGUI));
+                    unregister_code(KC_LGUI);
                 }
             }
             break;
@@ -26,7 +26,7 @@ bool toggle_gui(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if (tg_gui) {
                     tg_gui = false;
-                    SEND_STRING(SS_UP(X_LGUI));
+                    unregister_code(KC_LGUI);
                 }
             }
             break;
