@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "keymap_jp.h"
 #include "toggle_gui.h"
 #include <drivers/avr/pro_micro.h>
 
@@ -37,11 +38,11 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT_ortho_5x5(
-        KC_NLCK,     KC_ESC, KC_SLASH, S(KC_8), KC_MINS,
-        DF(_WINCTL), KC_7,   KC_8,     KC_9,   S(KC_EQL),
-        DF(_VSCTRL), KC_4,   KC_5,     KC_6,   S(KC_TAB),
-        KC_HOME,     KC_1,   KC_2,     KC_3,   KC_TAB,
-        MO(_FN),     KC_0,   KC_COMMA, KC_DOT, KC_ENT),
+        KC_NLCK,     KC_ESC, JP_SLSH, JP_ASTR, JP_MINS,
+        DF(_WINCTL), KC_7,   KC_8,     KC_9,    JP_PLUS,
+        DF(_VSCTRL), KC_4,   KC_5,     KC_6,    S(KC_TAB),
+        KC_HOME,     KC_1,   KC_2,     KC_3,    KC_TAB,
+        MO(_FN),     KC_0,   JP_COMM,  JP_DOT,  KC_ENT),
 
     [_NUMOFF] = LAYOUT_ortho_5x5(
         _______, _______, _______, _______, _______,
