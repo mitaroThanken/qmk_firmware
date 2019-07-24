@@ -218,6 +218,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
     }
 
+    if ((record->event.pressed) && layer_state_is(_NUM)) {
+        SEND_STRING(SS_TAP(X_INT5));
+    }
+
     return toggle_gui(keycode, record);
 }
 
