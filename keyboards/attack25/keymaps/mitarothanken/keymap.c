@@ -67,8 +67,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_RGB] = LAYOUT_ortho_5x5(
         XXXXXXX, RGB_MODE_SWIRL, RGB_MODE_SNAKE,   RGB_MODE_KNIGHT,  XXXXXXX,
-        RGBRST,  RGB_MODR,       RGBHDEC,          RGBSDEC,          RGBVDEC,
         RGB_TOG, RGB_MODF,       RGBHINC,          RGBSINC,          RGBVINC,
+        RGBRST,  RGB_MODR,       RGBHDEC,          RGBSDEC,          RGBVDEC,
         XXXXXXX, RGB_MODE_PLAIN, RGB_MODE_BREATHE, RGB_MODE_RAINBOW, XXXXXXX,
         MO(_FN), XXXXXXX,        XXXXXXX,          XXXXXXX,          XXXXXXX),
 
