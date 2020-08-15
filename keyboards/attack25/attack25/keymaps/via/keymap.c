@@ -3,7 +3,9 @@
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
     extern RGB_CONFIG_t RGB_CONFIG;
     RGB_CONFIG_t RGB_current_config;
+#ifdef RGB_MOMENTARY
     bool RGB_momentary_on;
+#endif
 #endif
 
 #ifdef MAC_MODE
@@ -262,7 +264,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	    if (!g_suspend_state && rgb_matrix_config.enable) {
 	        switch (biton32(layer_state)) {
 	            case _FN:
+#ifdef RGB_MOMENTARY
 		            RGB_momentary_on = true;
+#endif
                     #ifdef RGBLED_BOTH
 		                rgb_matrix_layer_helper(HSV_ORANGE, 0, rgb_matrix_config.speed, LED_FLAG_UNDERGLOW);
                     #else
@@ -282,24 +286,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     break;
 
                 default:
+#ifdef RGB_MOMENTARY
                     RGB_momentary_on = false;
+#endif
                     break;
 	        }
 	    }
         uint8_t usb_led = host_keyboard_leds();
-        if (!RGB_momentary_on && rgb_matrix_config.enable && !MAC_mode) {
-            NumLock_Mode = usb_led & (1 << USB_LED_NUM_LOCK);
-	        if (NumLock_Mode) {
-                rgb_sethsv_noeeprom(RGB_current_config_hue, RGB_current_config_sat, RGB_current_config_val);
-                rgblight_mode_noeeprom(RGB_current_config.mode);
-	        } else {
-                #ifdef RGBLED_BOTH
-                    rgb_matrix_layer_helper(HSV_AZURE, 1, rgb_matrix_config.speed, LED_FLAG_UNDERGLOW);
-                #else
-                    rgb_matrix_layer_helper(HSV_AZURE, 1, rgb_matrix_config.speed, LED_FLAG_NONE);
-                #endif
-	        }
-	    }
+#ifdef RGB_MOMENTARY
+        if (!RGB_momentary_on) {
+#endif
+            if (rgb_matrix_config.enable && !MAC_mode) {
+                NumLock_Mode = usb_led & (1 << USB_LED_NUM_LOCK);
+	            if (NumLock_Mode) {
+                    rgb_sethsv_noeeprom(RGB_current_config_hue, RGB_current_config_sat, RGB_current_config_val);
+                    rgblight_mode_noeeprom(RGB_current_config.mode);
+	            } else {
+                    #ifdef RGBLED_BOTH
+                        rgb_matrix_layer_helper(HSV_AZURE, 1, rgb_matrix_config.speed, LED_FLAG_UNDERGLOW);
+                    #else
+                        rgb_matrix_layer_helper(HSV_AZURE, 1, rgb_matrix_config.speed, LED_FLAG_NONE);
+                    #endif
+                }
+            }
+#ifdef RGB_MOMENTARY
+        }
+#endif
     }
 
 #elif defined(RGBLIGHT_ENABLE)
@@ -308,7 +320,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case _FN:
                 rgblight_sethsv_noeeprom(HSV_ORANGE);
                 rgblight_mode_noeeprom(1);
+#ifdef RGB_MOMENTARY
 		        RGB_momentary_on = true;
+#endif
 		        break;
 
             case _NUMOFF:
@@ -323,24 +337,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 RGB_current_config.raw = eeconfig_read_rgblight();
 		        rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val);
 	            rgblight_mode_noeeprom(RGB_current_config.mode);
+#ifdef RGB_MOMENTARY
 	            RGB_momentary_on = false;
+#endif
                 break;
 	    }
 	    return state;
     }
 
     void led_set_user(uint8_t usb_led) {
-        if (!RGB_momentary_on && !MAC_mode) {
-	        if (usb_led & (1 << USB_LED_NUM_LOCK)) {
-                NumLock_Mode = true;
-                rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val);
-			    rgblight_mode_noeeprom(RGB_current_config.mode);
-	        } else {
-		        NumLock_Mode = false;
-                rgblight_sethsv_noeeprom_azure();
-                rgblight_mode_noeeprom(1);
-	        }
-	    }
+#ifdef RGB_MOMENTARY
+        if (!RGB_momentary_on) {
+#endif
+            if (!MAC_mode) {
+                if (usb_led & (1 << USB_LED_NUM_LOCK)) {
+                    NumLock_Mode = true;
+                    rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val);
+                    rgblight_mode_noeeprom(RGB_current_config.mode);
+                } else {
+                    NumLock_Mode = false;
+                    rgblight_sethsv_noeeprom_azure();
+                    rgblight_mode_noeeprom(1);
+                }
+            }
+#ifdef RGB_MOMENTARY
+        }
+#endif
     }
 #endif
 

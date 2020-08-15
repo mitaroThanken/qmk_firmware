@@ -28,6 +28,7 @@ define ATTACK25_CUSTOMISE_MSG
   	$(info -  LED_ANIMATION=$(LED_ANIMATIONS))
   	$(info -  IOS_DEVICE_ENABLE=$(IOS_DEVICE_ENABLE))
 	$(info -  MAC_MODE=$(MAC_MODE))
+	$(info -  RGB_MOMENTARY=$(RGB_MOMENTARY))
 endef
 
 # Attack25 keyboard customize
@@ -40,12 +41,13 @@ LED_ANIMATIONS = yes        # LED animations
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
 MAC_MODE = yes              # Disable Windows Numlock and enable Numlock emuration
 Link_Time_Optimization = no # if firmware size over limit, try this option
+RGB_MOMENTARY = yes         # MO Layer indicator support
 ####  LED_BACK_ENABLE and LED_UNDERGLOW_ENABLE.
 ####    Do not enable these with audio at the same time.
 
 ### Attack25 keyboard 'via' keymap: convenient command line option
 ##    make ATTACK25=<options> attack25:via
-##    option= back | under | both | 1led | matrix | na | ios | win
+##    option= back | under | both | 1led | matrix | na | ios | win | no_rgb_momentary
 ##    ex.
 ##      make attack25:via
 ##      make ATTACK25=win  attack25:via
@@ -77,6 +79,9 @@ ifneq ($(strip $(ATTACK25)),)
 	ifeq ($(findstring win,$(ATTACK25)), win)
     	MAC_MODE = no
   	endif
+	ifeq ($(findstring no_rgb_momentary,$(ATTACK25)), no_rgb_momentary)
+    	RGB_MOMENTARY = no
+	endif
   	$(eval $(call ATTACK25_CUSTOMISE_MSG))
   	$(info )
 endif
@@ -111,6 +116,10 @@ endif
 
 ifeq ($(strip $(MAC_MODE)), yes)
     OPT_DEFS += -DMAC_MODE
+endif
+
+ifeq ($(strip $(RGB_MOMENTARY)), yes)
+    OPT_DEFS += -DRGB_MOMENTARY
 endif
 
 ifeq ($(strip $(LED_ANIMATIONS)), yes)
