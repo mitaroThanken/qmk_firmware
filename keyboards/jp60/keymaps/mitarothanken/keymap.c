@@ -59,7 +59,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(SS_TAP(X_F24));
             }
             break;
-
     }
     return true;
 }
